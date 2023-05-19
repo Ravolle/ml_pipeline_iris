@@ -1,19 +1,32 @@
 stages:
+
+  predobrabotka_features:
+    cmd: PYTHONPATH="." python3 lib/predobrabotka_features.py --config-path params.yaml
+    params:
+      - predobrabotka_features.test_size
+      - predobrabotka_features.features
+    deps:
+      - lib/predobrabotka_features.py
+    outs:
+      - data/predobrabotka_features
+
   train:
-    cmd: PYTHONPATH="." python lib/train.py --config-path params.yaml
+    cmd: PYTHONPATH="." python3 lib/train.py --config-path params.yaml
     params:
       - train
     deps:
       - lib/train.py
+      - data/predobrabotka_features
     outs:
       - data/train
 
   eval:
-    cmd: PYTHONPATH="." python lib/eval.py --config-path params.yaml
+    cmd: PYTHONPATH="." python3 lib/eval.py --config-path params.yaml
     params:
       - eval
     deps:
       - lib/eval.py
+      - data/predobrabotka_features
       - data/train
     outs:
       - data/eval

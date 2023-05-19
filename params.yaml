@@ -1,5 +1,11 @@
-train:
+predobrabotka_features:
   test_size: 0.9
+  features:
+  - sepal_length
+  - sepal_width
+
+train:
+  model: DecisionTreeClassifier
 
 eval:
   metrics:

@@ -40,7 +40,7 @@ class ConfigPusher:
             task_instance.xcom_push(key=key, value=value)
 
 
-def get_data_dag(dag_id: str = 'test', image='tolkkk/irisr_simpe'):
+def get_data_dag(dag_id: str = 'test', image='zhalyalovrr/aaa_iris_pipeline'):
     with models.DAG(
             dag_id=dag_id,
             start_date=datetime.datetime(2022, 4, 1),
